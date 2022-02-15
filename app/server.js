@@ -1,11 +1,11 @@
 'use strict';
-const express = require('express');
-const moment = require('moment');
-const bodyParser = require('body-parser');
-const db = require('./db.js');
-require('dotenv').config();
 
+import express from 'express';
+import moment from 'moment';   
+import dotenv from 'dotenv'
+import db from './db.js' 
 
+dotenv.config()
 const port = process.env.PORT;
 
 const app = express();

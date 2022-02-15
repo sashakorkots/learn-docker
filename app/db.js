@@ -1,10 +1,11 @@
-const Pool = require('pg').Pool
-const pool = new Pool({
+import pg from 'pg'
+
+const pool = new pg.Pool({
     user: "test",
     password: 'secret',
-    host: "learn-docker_db_1",
+    host: "nodejs-db-1",
     port: 5432,
     database: "test"
 })
 
-module.exports = pool
+export default pool
