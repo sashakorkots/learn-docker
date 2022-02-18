@@ -5,11 +5,14 @@ import moment from 'moment';
 import dotenv from 'dotenv'
 import db from './db.js' 
 import path from 'path'
+import websocket from './wbsocket.js'
 
 dotenv.config()
 const port = process.env.PORT;
-
 const app = express();
+
+websocket(app)
+
 app.get('/db', (req, res) => {
     db.query('INSERT INTO users (name, email) values ($1, $2)', ['Sasha', 'Korkots'])
     res.send(`database changed| (${moment().format('LLL')})`)

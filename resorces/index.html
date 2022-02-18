@@ -8,5 +8,31 @@
 </head>
 <body>
     <h1>Hello Sasha</h1>
+    <button onclick="sendHello()">Hello</button>
+    <button onclick="sendBye()">Bye</button>
+    <p id="answer"></p>
 </body>
+<script>
+    // Create WebSocket connection.
+    const socket = new WebSocket('ws://localhost:3001');
+
+    // Connection opened
+    socket.addEventListener('open', function (event) {
+        socket.send('Hello Server!');
+    });
+
+    // Listen for messages
+    socket.addEventListener('message', function (event) {
+        const element = document.getElementById("answer");
+        element.innerText = event.data
+    });
+
+    const sendHello = () => {  
+        socket.send('Hello from web')
+    }
+
+    const sendBye = () => {
+        socket.send('Bye from web')
+    }
+</script>
 </html>
